@@ -38,10 +38,16 @@ class moviesApp extends StatelessWidget {
           itemCount: movieList.length,
           itemBuilder: (BuildContext, int index) {
             return Stack(children:[ 
-              movieIMG(movieList[index].images[0]),
+
+          Positioned(
+            
+            child: movieIMG(movieList[index].images[0])),
               
               
-              movieCard(movieList[index], context)
+              Positioned(
+                top: 10.0,
+                child: movieCard(movieList[index], context)),
+            
               
               ]);
           }),
@@ -104,6 +110,7 @@ class moviesApp extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => movieListView(
                                 movieName: movie.title,
+                                
                               )));
      },
     );
@@ -111,9 +118,11 @@ class moviesApp extends StatelessWidget {
 
   Widget movieIMG(String imageUrl){
     return Container(
+      width: 100,
+      height: 100,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-         image: DecorationImage(image: NetworkImage(imageUrl ?? "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyOTYyMzUxNl5BMl5BanBnXkFtZTcwNTg0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg"),fit: BoxFit.cover)
+         image: DecorationImage(image: NetworkImage(imageUrl  ),fit: BoxFit.cover)
       ),
     );
 
